@@ -41,7 +41,11 @@ def compute_scores(model, X, y):
             mean_precision_micro, var_precision_micro, mean_precision_macro, var_precision_macro,
             mean_recall_micro, var_recall_micro, mean_recall_macro, var_recall_macro)
     
-df = pd.read_csv('C:/Users/chris/Downloads/VSCode/Internship_objects/datasets/creditcard.csv')
+#PC call
+#df = pd.read_csv('C:/Users/chris/Downloads/VSCode/Internship_objects/datasets/creditcard.csv')
+
+#Laptop call
+df = pd.read_csv('C:/Users/chris/Documents/GitHub/Internship-Research/datasets/Ecoli.csv')
 
 X = df.iloc[:, :-1]
 y = df.iloc[: ,-1]
