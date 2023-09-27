@@ -45,7 +45,7 @@ def compute_scores(model, X, y):
 #df = pd.read_csv('C:/Users/chris/Downloads/VSCode/Internship_objects/datasets/creditcard.csv')
 
 #Laptop call
-df = pd.read_csv('C:/Users/chris/Documents/GitHub/Internship-Research/datasets/cmc.csv')
+df = pd.read_csv('C:/Users/chris/Documents/GitHub/Internship-Research/datasets/Ionosphere.csv')
 
 X = df.iloc[:, :-1]
 y = df.iloc[: ,-1]
@@ -62,12 +62,12 @@ min_instances_per_class = 100
 sampling_strategy_dict = {key: min_instances_per_class for key, value in class_counts.items() if value < min_instances_per_class}
 
 #for when it works
-adasyn = ADASYN(sampling_strategy=sampling_strategy_dict, random_state=42)
-X_ADASYN, y_ADASYN =adasyn.fit_resample(X_ADASYN, y_ADASYN)
+#adasyn = ADASYN(sampling_strategy=sampling_strategy_dict, random_state=42)
+#, y_ADASYN =adasyn.fit_resample(X_ADASYN, y_ADASYN)
 
 #for when it doesnt
-# adasyn = ADASYN(sampling_strategy=sampling_strategy_dict, n_neighbors=5, random_state=42)
-# X_ADASYN, y_ADASYN = adasyn.fit_resample(X_ADASYN, y_ADASYN)
+adasyn = ADASYN(sampling_strategy=sampling_strategy_dict, n_neighbors=5, random_state=42)
+X_ADASYN, y_ADASYN = adasyn.fit_resample(X_ADASYN, y_ADASYN)
 
 model_ADASYN = DecisionTreeClassifier()
 model_ADASYN.fit(X_ADASYN, y_ADASYN)
@@ -122,13 +122,13 @@ mean_accuracy_CLUSTER, var_accuracy_CLUSTER, mean_f1_micro_CLUSTER, var_f1_micro
 
 def print_scores(resampling_name, mean_accuracy, var_accuracy, mean_f1_micro, var_f1_micro, mean_f1_macro, var_f1_macro, mean_precision_micro, var_precision_micro, mean_precision_macro, var_precision_macro, mean_recall_micro, var_recall_micro, mean_recall_macro, var_recall_macro):
     print(resampling_name)
-    print("Accuracy  Mean:", mean_accuracy, "(Variance:", var_accuracy, ")")
-    print("F1 Micro  Mean:", mean_f1_micro, "(Variance:", var_f1_micro, ")")
-    print("Mean:", mean_f1_macro, "(Variance:", var_f1_macro, ")")
-    print("Mean:", mean_precision_micro, "(Variance:", var_precision_micro, ")")
-    print("Mean:", mean_precision_macro, "(Variance:", var_precision_macro, ")")
-    print("Mean:", mean_recall_micro, "(Variance:", var_recall_micro, ")")
-    print("Mean:", mean_recall_macro, "(Variance:", var_recall_macro, ")")
+    print("Accuracy Mean:", mean_accuracy, "(Variance:", var_accuracy, ")")
+    print("F1 Micro Mean:", mean_f1_micro, "(Variance:", var_f1_micro, ")")
+    print("F1 Macro Mean:", mean_f1_macro, "(Variance:", var_f1_macro, ")")
+    print("Mean Precicion Micro:", mean_precision_micro, "(Variance:", var_precision_micro, ")")
+    print("Mean Precision Macro:", mean_precision_macro, "(Variance:", var_precision_macro, ")")
+    print("Mean Recall Micro:", mean_recall_micro, "(Variance:", var_recall_micro, ")")
+    print("Mean Recall Macro:", mean_recall_macro, "(Variance:", var_recall_macro, ")")
 
 def all_scores():
     print()
@@ -161,9 +161,9 @@ def plot_tsne_with_labels_and_save(X, y, title, save_filename):
     plt.savefig(save_filename)  # Save the figure as an image
 
 # Example usage
-plot_tsne_with_labels_and_save(X, y, "Decision Tree - Glass No Resampling", "DT_no_resampling.png")
-plot_tsne_with_labels_and_save(X_ADASYN, y_ADASYN, "Decision Tree - Glass ADASYN", "DT_adasyn.png")
-plot_tsne_with_labels_and_save(X_SMOTE, y_SMOTE, "Decision Tree - Glass SMOTE", "DT_smote.png")
-plot_tsne_with_labels_and_save(X_BSMOTE, y_BSMOTE, "Decision Tree - Glass BSMOTE", "DT_bsmote.png")
-plot_tsne_with_labels_and_save(X_SMOTEENN, y_SMOTEENN, "Decision Tree - Glass SMOTEENN", "DT_smoteenn.png")
-plot_tsne_with_labels_and_save(X_CLUSTER, y_CLUSTER, "Decision Tree - Glass CLUSTER", "DT_cluster.png")
+plot_tsne_with_labels_and_save(X, y, "Decision Tree - Ionosphere No Resampling", "DT_no_resampling.png")
+plot_tsne_with_labels_and_save(X_ADASYN, y_ADASYN, "Decision Tree - Ionosphere ADASYN", "DT_adasyn.png")
+plot_tsne_with_labels_and_save(X_SMOTE, y_SMOTE, "Decision Tree - Ionosphere SMOTE", "DT_smote.png")
+plot_tsne_with_labels_and_save(X_BSMOTE, y_BSMOTE, "Decision Tree - Ionosphere BSMOTE", "DT_bsmote.png")
+plot_tsne_with_labels_and_save(X_SMOTEENN, y_SMOTEENN, "Decision Tree - Ionosphere SMOTEENN", "DT_smoteenn.png")
+plot_tsne_with_labels_and_save(X_CLUSTER, y_CLUSTER, "Decision Tree - Ionosphere CLUSTER", "DT_cluster.png")

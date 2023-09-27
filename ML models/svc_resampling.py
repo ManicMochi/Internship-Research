@@ -46,7 +46,7 @@ def compute_scores(model, X, y):
 #df = pd.read_csv('C:/Users/chris/Downloads/VSCode/Internship_objects/datasets/creditcard.csv')
 
 #Laptop call
-df = pd.read_csv('C:/Users/chris/Documents/GitHub/Internship-Research/datasets/Ecoli.csv')
+df = pd.read_csv('C:/Users/chris/Documents/GitHub/Internship-Research/datasets/Ionosphere.csv')
 
 #no resampling
 X = df.iloc[:, :-1]  
@@ -124,13 +124,13 @@ mean_accuracy_CLUSTER, var_accuracy_CLUSTER, mean_f1_micro_CLUSTER, var_f1_micro
 
 def print_scores(resampling_name, mean_accuracy, var_accuracy, mean_f1_micro, var_f1_micro, mean_f1_macro, var_f1_macro, mean_precision_micro, var_precision_micro, mean_precision_macro, var_precision_macro, mean_recall_micro, var_recall_micro, mean_recall_macro, var_recall_macro):
     print(resampling_name)
-    print("Accuracy  Mean:", mean_accuracy, "(Variance:", var_accuracy, ")")
-    print("F1 Micro  Mean:", mean_f1_micro, "(Variance:", var_f1_micro, ")")
-    print("Mean:", mean_f1_macro, "(Variance:", var_f1_macro, ")")
-    print("Mean:", mean_precision_micro, "(Variance:", var_precision_micro, ")")
-    print("Mean:", mean_precision_macro, "(Variance:", var_precision_macro, ")")
-    print("Mean:", mean_recall_micro, "(Variance:", var_recall_micro, ")")
-    print("Mean:", mean_recall_macro, "(Variance:", var_recall_macro, ")")
+    print("Accuracy Mean:", mean_accuracy, "(Variance:", var_accuracy, ")")
+    print("F1 Micro Mean:", mean_f1_micro, "(Variance:", var_f1_micro, ")")
+    print("F1 Macro Mean:", mean_f1_macro, "(Variance:", var_f1_macro, ")")
+    print("Mean Precicion Micro:", mean_precision_micro, "(Variance:", var_precision_micro, ")")
+    print("Mean Precision Macro:", mean_precision_macro, "(Variance:", var_precision_macro, ")")
+    print("Mean Recall Micro:", mean_recall_micro, "(Variance:", var_recall_micro, ")")
+    print("Mean Recall Macro:", mean_recall_macro, "(Variance:", var_recall_macro, ")")
 
 def all_scores():
     print()
@@ -163,9 +163,9 @@ def plot_tsne_with_labels_and_save(X, y, title, save_filename):
     plt.savefig(save_filename)  # Save the figure as an image
 
 # Example usage
-plot_tsne_with_labels_and_save(X, y, "Support Vector Classification - Glass No Resampling", "SVC_no_resampling.png")
-plot_tsne_with_labels_and_save(X_ADASYN, y_ADASYN, "Support Vector Classification - Glass ADASYN", "SVC_adasyn.png")
-plot_tsne_with_labels_and_save(X_SMOTE, y_SMOTE, "Support Vector Classification - Glass SMOTE", "SVC_smote.png")
-plot_tsne_with_labels_and_save(X_BSMOTE, y_BSMOTE, "Support Vector Classification - Glass BSMOTE", "SVC_bsmote.png")
-plot_tsne_with_labels_and_save(X_SMOTEENN, y_SMOTEENN, "Support Vector Classification - Glass SMOTEENN", "SVC_smoteenn.png")
-plot_tsne_with_labels_and_save(X_CLUSTER, y_CLUSTER, "Support Vector Classification - Glass CLUSTER", "SVC_cluster.png")
+plot_tsne_with_labels_and_save(X, y, "Support Vector Classification - Ionosphere No Resampling", "SVC_no_resampling.png")
+plot_tsne_with_labels_and_save(X_ADASYN, y_ADASYN, "Support Vector Classification - Ionosphere ADASYN", "SVC_adasyn.png")
+plot_tsne_with_labels_and_save(X_SMOTE, y_SMOTE, "Support Vector Classification - Ionosphere SMOTE", "SVC_smote.png")
+plot_tsne_with_labels_and_save(X_BSMOTE, y_BSMOTE, "Support Vector Classification - Ionosphere BSMOTE", "SVC_bsmote.png")
+plot_tsne_with_labels_and_save(X_SMOTEENN, y_SMOTEENN, "Support Vector Classification - Ionosphere SMOTEENN", "SVC_smoteenn.png")
+plot_tsne_with_labels_and_save(X_CLUSTER, y_CLUSTER, "Support Vector Classification - Ionosphere CLUSTER", "SVC_cluster.png")

@@ -45,7 +45,7 @@ def compute_scores(model, X, y):
 #df = pd.read_csv('C:/Users/chris/Downloads/VSCode/Internship_objects/datasets/creditcard.csv')
 
 #Laptop call
-df = pd.read_csv('C:/Users/chris/Documents/GitHub/Internship-Research/datasets/Ecoli.csv')
+df = pd.read_csv('C:/Users/chris/Documents/GitHub/Internship-Research/datasets/Ionosphere.csv')
 
 X = df.iloc[:, :-1]  
 y = df.iloc[:, -1]  
@@ -60,9 +60,14 @@ y_ADASYN = y.copy()
 class_counts = y.value_counts().to_dict()
 min_instances_per_class = 100
 sampling_strategy_dict = {key: min_instances_per_class for key, value in class_counts.items() if value < min_instances_per_class}
-adasyn = ADASYN(sampling_strategy=sampling_strategy_dict, random_state=42)
 
-X_ADASYN, y_ADASYN =adasyn.fit_resample(X_ADASYN, y_ADASYN)
+#for when it works
+#adasyn = ADASYN(sampling_strategy=sampling_strategy_dict, random_state=42)
+#X_ADASYN, y_ADASYN =adasyn.fit_resample(X_ADASYN, y_ADASYN)
+
+#for when it doesnt 
+adasyn = ADASYN(sampling_strategy=sampling_strategy_dict, n_neighbors=5, random_state=42)
+X_ADASYN, y_ADASYN = adasyn.fit_resample(X_ADASYN, y_ADASYN)
 
 model_ADASYN = RandomForestClassifier()
 model_ADASYN.fit(X_ADASYN, y_ADASYN)
@@ -118,13 +123,13 @@ mean_accuracy_CLUSTER, var_accuracy_CLUSTER, mean_f1_micro_CLUSTER, var_f1_micro
 
 def print_scores(resampling_name, mean_accuracy, var_accuracy, mean_f1_micro, var_f1_micro, mean_f1_macro, var_f1_macro, mean_precision_micro, var_precision_micro, mean_precision_macro, var_precision_macro, mean_recall_micro, var_recall_micro, mean_recall_macro, var_recall_macro):
     print(resampling_name)
-    print("Accuracy  Mean:", mean_accuracy, "(Variance:", var_accuracy, ")")
-    print("F1 Micro  Mean:", mean_f1_micro, "(Variance:", var_f1_micro, ")")
-    print("Mean:", mean_f1_macro, "(Variance:", var_f1_macro, ")")
-    print("Mean:", mean_precision_micro, "(Variance:", var_precision_micro, ")")
-    print("Mean:", mean_precision_macro, "(Variance:", var_precision_macro, ")")
-    print("Mean:", mean_recall_micro, "(Variance:", var_recall_micro, ")")
-    print("Mean:", mean_recall_macro, "(Variance:", var_recall_macro, ")")
+    print("Accuracy Mean:", mean_accuracy, "(Variance:", var_accuracy, ")")
+    print("F1 Micro Mean:", mean_f1_micro, "(Variance:", var_f1_micro, ")")
+    print("F1 Macro Mean:", mean_f1_macro, "(Variance:", var_f1_macro, ")")
+    print("Mean Precicion Micro:", mean_precision_micro, "(Variance:", var_precision_micro, ")")
+    print("Mean Precision Macro:", mean_precision_macro, "(Variance:", var_precision_macro, ")")
+    print("Mean Recall Micro:", mean_recall_micro, "(Variance:", var_recall_micro, ")")
+    print("Mean Recall Macro:", mean_recall_macro, "(Variance:", var_recall_macro, ")")
 
 def all_scores():
     print()
@@ -157,9 +162,9 @@ def plot_tsne_with_labels_and_save(X, y, title, save_filename):
     plt.savefig(save_filename)  # Save the figure as an image
 
 # Example usage
-plot_tsne_with_labels_and_save(X, y, "Random Forest - Glass No Resampling", "RF_no_resampling.png")
-plot_tsne_with_labels_and_save(X_ADASYN, y_ADASYN, "Random Forest - Glass ADASYN", "RF_adasyn.png")
-plot_tsne_with_labels_and_save(X_SMOTE, y_SMOTE, "Random Forest - Glass SMOTE", "RF_smote.png")
-plot_tsne_with_labels_and_save(X_BSMOTE, y_BSMOTE, "Random Forest - Glass BSMOTE", "RF_bsmote.png")
-plot_tsne_with_labels_and_save(X_SMOTEENN, y_SMOTEENN, "Random Forest - Glass SMOTEENN", "RF_smoteenn.png")
-plot_tsne_with_labels_and_save(X_CLUSTER, y_CLUSTER, "Random Forest - Glass CLUSTER", "RF_cluster.png")
+plot_tsne_with_labels_and_save(X, y, "Random Forest - Ionosphere No Resampling", "RF_no_resampling.png")
+plot_tsne_with_labels_and_save(X_ADASYN, y_ADASYN, "Random Forest - Ionosphere ADASYN", "RF_adasyn.png")
+plot_tsne_with_labels_and_save(X_SMOTE, y_SMOTE, "Random Forest - Ionosphere SMOTE", "RF_smote.png")
+plot_tsne_with_labels_and_save(X_BSMOTE, y_BSMOTE, "Random Forest - Ionosphere BSMOTE", "RF_bsmote.png")
+plot_tsne_with_labels_and_save(X_SMOTEENN, y_SMOTEENN, "Random Forest - Ionosphere SMOTEENN", "RF_smoteenn.png")
+plot_tsne_with_labels_and_save(X_CLUSTER, y_CLUSTER, "Random Forest - Ionosphere CLUSTER", "RF_cluster.png")

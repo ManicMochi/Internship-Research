@@ -47,7 +47,7 @@ def compute_scores(model, X, y):
 #df = pd.read_csv('C:/Users/chris/Downloads/VSCode/Internship_objects/datasets/creditcard.csv')
 
 #Laptop call
-df = pd.read_csv('C:/Users/chris/Documents/GitHub/Internship-Research/datasets/Ecoli.csv')
+df = pd.read_csv('C:/Users/chris/Documents/GitHub/Internship-Research/datasets/Ionosphere.csv')
 
 X = df.iloc[:, :-1]  
 y = df.iloc[:, -1]  
@@ -55,7 +55,7 @@ y = df.iloc[:, -1]
 scaler = StandardScaler()  
 X = scaler.fit_transform(X)  
 
-model = MLPClassifier(max_iter=3000)
+model = MLPClassifier(max_iter=1000)
 model.fit(X, y)
 
 #ADASYN resampling
@@ -69,7 +69,7 @@ adasyn = ADASYN(sampling_strategy=sampling_strategy_dict, random_state=42)
 
 X_ADASYN, y_ADASYN =adasyn.fit_resample(X_ADASYN, y_ADASYN)
 
-model_ADASYN = MLPClassifier(max_iter=3000)
+model_ADASYN = MLPClassifier(max_iter=1000)
 model_ADASYN.fit(X_ADASYN, y_ADASYN)
 
 #SMOTE resampling
@@ -80,7 +80,7 @@ smote = SMOTE(random_state=42)
 
 X_SMOTE, y_SMOTE  = smote.fit_resample(X_SMOTE, y_SMOTE)
 
-model_SMOTE = MLPClassifier(max_iter=3000)
+model_SMOTE = MLPClassifier(max_iter=1000)
 model_SMOTE.fit(X_SMOTE, y_SMOTE)
 
 #borderline SMOTE resampling
@@ -90,7 +90,7 @@ y_BSMOTE = y.copy()
 bsmote = BorderlineSMOTE()
 X_BSMOTE, y_BSMOTE = bsmote.fit_resample(X_BSMOTE, y_BSMOTE)
 
-model_BSMOTE = MLPClassifier(max_iter=3000)
+model_BSMOTE = MLPClassifier(max_iter=1000)
 model_BSMOTE.fit(X_BSMOTE, y_BSMOTE)
 
 #SMOTEENN resampling
@@ -100,7 +100,7 @@ y_SMOTEENN = y.copy()
 smoteenn = SMOTEENN()
 X_SMOTEENN, y_SMOTEENN = smoteenn.fit_resample(X_SMOTEENN, y_SMOTEENN)
 
-model_SMOTEENN = MLPClassifier(max_iter=3000)
+model_SMOTEENN = MLPClassifier(max_iter=1000)
 model_SMOTEENN.fit(X_SMOTEENN, y_SMOTEENN)
 
 #ClusterCentroids  resampling
@@ -110,7 +110,7 @@ y_CLUSTER = y.copy()
 cluster_centroids = ClusterCentroids(sampling_strategy='auto', random_state=42)
 X_CLUSTER, y_CLUSTER = cluster_centroids.fit_resample(X_CLUSTER, y_CLUSTER)
 
-model_CLUSTER = MLPClassifier(3000)
+model_CLUSTER = MLPClassifier(max_iter= 1000)
 model_CLUSTER.fit(X_CLUSTER, y_CLUSTER)
 
 #collecting scores
@@ -123,13 +123,13 @@ mean_accuracy_CLUSTER, var_accuracy_CLUSTER, mean_f1_micro_CLUSTER, var_f1_micro
 
 def print_scores(resampling_name, mean_accuracy, var_accuracy, mean_f1_micro, var_f1_micro, mean_f1_macro, var_f1_macro, mean_precision_micro, var_precision_micro, mean_precision_macro, var_precision_macro, mean_recall_micro, var_recall_micro, mean_recall_macro, var_recall_macro):
     print(resampling_name)
-    print("Accuracy  Mean:", mean_accuracy, "(Variance:", var_accuracy, ")")
-    print("F1 Micro  Mean:", mean_f1_micro, "(Variance:", var_f1_micro, ")")
-    print("Mean:", mean_f1_macro, "(Variance:", var_f1_macro, ")")
-    print("Mean:", mean_precision_micro, "(Variance:", var_precision_micro, ")")
-    print("Mean:", mean_precision_macro, "(Variance:", var_precision_macro, ")")
-    print("Mean:", mean_recall_micro, "(Variance:", var_recall_micro, ")")
-    print("Mean:", mean_recall_macro, "(Variance:", var_recall_macro, ")")
+    print("Accuracy Mean:", mean_accuracy, "(Variance:", var_accuracy, ")")
+    print("F1 Micro Mean:", mean_f1_micro, "(Variance:", var_f1_micro, ")")
+    print("F1 Macro Mean:", mean_f1_macro, "(Variance:", var_f1_macro, ")")
+    print("Mean Precicion Micro:", mean_precision_micro, "(Variance:", var_precision_micro, ")")
+    print("Mean Precision Macro:", mean_precision_macro, "(Variance:", var_precision_macro, ")")
+    print("Mean Recall Micro:", mean_recall_micro, "(Variance:", var_recall_micro, ")")
+    print("Mean Recall Macro:", mean_recall_macro, "(Variance:", var_recall_macro, ")")
 
 def all_scores():
     print()
@@ -162,9 +162,9 @@ def plot_tsne_with_labels_and_save(X, y, title, save_filename):
     plt.savefig(save_filename)  # Save the figure as an image
 
 # Example usage
-plot_tsne_with_labels_and_save(X, y, "Multilayer Preceptron - Glass No Resampling", "MLP_no_resampling.png")
-plot_tsne_with_labels_and_save(X_ADASYN, y_ADASYN, "Multilayer Preceptron - Glass ADASYN", "MLP_adasyn.png")
-plot_tsne_with_labels_and_save(X_SMOTE, y_SMOTE, "Multilayer Preceptron - Glass SMOTE", "MLP_smote.png")
-plot_tsne_with_labels_and_save(X_BSMOTE, y_BSMOTE, "Multilayer Preceptron - Glass BSMOTE", "MLP_bsmote.png")
-plot_tsne_with_labels_and_save(X_SMOTEENN, y_SMOTEENN, "Multilayer Preceptron - Glass SMOTEENN", "MLP_smoteenn.png")
-plot_tsne_with_labels_and_save(X_CLUSTER, y_CLUSTER, "Multilayer Preceptron - Glass CLUSTER", "MLP_cluster.png")
+plot_tsne_with_labels_and_save(X, y, "Multilayer Preceptron - Ionosphere No Resampling", "MLP_no_resampling.png")
+plot_tsne_with_labels_and_save(X_ADASYN, y_ADASYN, "Multilayer Preceptron - Ionosphere ADASYN", "MLP_adasyn.png")
+plot_tsne_with_labels_and_save(X_SMOTE, y_SMOTE, "Multilayer Preceptron - Ionosphere SMOTE", "MLP_smote.png")
+plot_tsne_with_labels_and_save(X_BSMOTE, y_BSMOTE, "Multilayer Preceptron - Ionosphere BSMOTE", "MLP_bsmote.png")
+plot_tsne_with_labels_and_save(X_SMOTEENN, y_SMOTEENN, "Multilayer Preceptron - Ionosphere SMOTEENN", "MLP_smoteenn.png")
+plot_tsne_with_labels_and_save(X_CLUSTER, y_CLUSTER, "Multilayer Preceptron - Ionosphere CLUSTER", "MLP_cluster.png")

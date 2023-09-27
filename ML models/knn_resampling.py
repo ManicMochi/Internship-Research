@@ -47,7 +47,7 @@ def compute_scores(model, X, y):
 #df = pd.read_csv('C:/Users/chris/Downloads/VSCode/Internship_objects/datasets/creditcard.csv')
 
 #Laptop call
-df = pd.read_csv('C:/Users/chris/Documents/GitHub/Internship-Research/datasets/Ecoli.csv')
+df = pd.read_csv('C:/Users/chris/Documents/GitHub/Internship-Research/datasets/Ionosphere.csv')
 
 X = df.iloc[:, :-1]  
 y = df.iloc[:, -1]  
@@ -123,13 +123,13 @@ mean_accuracy_CLUSTER, var_accuracy_CLUSTER, mean_f1_micro_CLUSTER, var_f1_micro
 
 def print_scores(resampling_name, mean_accuracy, var_accuracy, mean_f1_micro, var_f1_micro, mean_f1_macro, var_f1_macro, mean_precision_micro, var_precision_micro, mean_precision_macro, var_precision_macro, mean_recall_micro, var_recall_micro, mean_recall_macro, var_recall_macro):
     print(resampling_name)
-    print("Accuracy  Mean:", mean_accuracy, "(Variance:", var_accuracy, ")")
-    print("F1 Micro  Mean:", mean_f1_micro, "(Variance:", var_f1_micro, ")")
-    print("Mean:", mean_f1_macro, "(Variance:", var_f1_macro, ")")
-    print("Mean:", mean_precision_micro, "(Variance:", var_precision_micro, ")")
-    print("Mean:", mean_precision_macro, "(Variance:", var_precision_macro, ")")
-    print("Mean:", mean_recall_micro, "(Variance:", var_recall_micro, ")")
-    print("Mean:", mean_recall_macro, "(Variance:", var_recall_macro, ")")
+    print("Accuracy Mean:", mean_accuracy, "(Variance:", var_accuracy, ")")
+    print("F1 Micro Mean:", mean_f1_micro, "(Variance:", var_f1_micro, ")")
+    print("F1 Macro Mean:", mean_f1_macro, "(Variance:", var_f1_macro, ")")
+    print("Mean Precicion Micro:", mean_precision_micro, "(Variance:", var_precision_micro, ")")
+    print("Mean Precision Macro:", mean_precision_macro, "(Variance:", var_precision_macro, ")")
+    print("Mean Recall Micro:", mean_recall_micro, "(Variance:", var_recall_micro, ")")
+    print("Mean Recall Macro:", mean_recall_macro, "(Variance:", var_recall_macro, ")")
 
 def all_scores():
     print()
@@ -161,9 +161,9 @@ def plot_tsne_with_labels_and_save(X, y, title, save_filename):
     plt.ylabel("t-SNE Component 2")
     plt.savefig(save_filename)  # Save the figure as an image
 
-plot_tsne_with_labels_and_save(X, y, "K-Nearest Neighbors - Glass No Resampling", "KNN_no_resampling.png")
-plot_tsne_with_labels_and_save(X_ADASYN, y_ADASYN, "K-Nearest Neighbors - Glass ADASYN", "KNN_adasyn.png")
-plot_tsne_with_labels_and_save(X_SMOTE, y_SMOTE, "K-Nearest Neighbors - Glass SMOTE", "KNN_smote.png")
-plot_tsne_with_labels_and_save(X_BSMOTE, y_BSMOTE, "K-Nearest Neighbors - Glass BSMOTE", "KNN_bsmote.png")
-plot_tsne_with_labels_and_save(X_SMOTEENN, y_SMOTEENN, "K-Nearest Neighbors - Glass SMOTEENN", "KNN_smoteenn.png")
-plot_tsne_with_labels_and_save(X_CLUSTER, y_CLUSTER, "K-Nearest Neighbors - Glass CLUSTER", "KNN_cluster.png")
+plot_tsne_with_labels_and_save(X, y, "K-Nearest Neighbors - Ionosphere No Resampling", "KNN_no_resampling.png")
+plot_tsne_with_labels_and_save(X_ADASYN, y_ADASYN, "K-Nearest Neighbors - Ionosphere ADASYN", "KNN_adasyn.png")
+plot_tsne_with_labels_and_save(X_SMOTE, y_SMOTE, "K-Nearest Neighbors - Ionosphere SMOTE", "KNN_smote.png")
+plot_tsne_with_labels_and_save(X_BSMOTE, y_BSMOTE, "K-Nearest Neighbors - Ionosphere BSMOTE", "KNN_bsmote.png")
+plot_tsne_with_labels_and_save(X_SMOTEENN, y_SMOTEENN, "K-Nearest Neighbors - Ionosphere SMOTEENN", "KNN_smoteenn.png")
+plot_tsne_with_labels_and_save(X_CLUSTER, y_CLUSTER, "K-Nearest Neighbors - Ionosphere CLUSTER", "KNN_cluster.png")
