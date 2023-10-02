@@ -47,7 +47,7 @@ def compute_scores(model, X, y):
 #df = pd.read_csv('C:/Users/chris/Downloads/VSCode/Internship_objects/datasets/creditcard.csv')
 
 #Laptop call
-df = pd.read_csv('C:/Users/chris/Documents/GitHub/Internship-Research/datasets/Ionosphere.csv')
+df = pd.read_csv('C:/Users/chris/Documents/GitHub/Internship-Research/datasets/page_blocks.csv')
 
 X = df.iloc[:, :-1]  
 y = df.iloc[:, -1]  
@@ -65,11 +65,10 @@ y_ADASYN = y.copy()
 class_counts = y.value_counts().to_dict()
 min_instances_per_class = 100
 sampling_strategy_dict = {key: min_instances_per_class for key, value in class_counts.items() if value < min_instances_per_class}
-adasyn = ADASYN(sampling_strategy=sampling_strategy_dict, random_state=42)
+adasyn = ADASYN(sampling_strategy=sampling_strategy_dict, n_neighbors=4, random_state=42)
+X_ADASYN, y_ADASYN = adasyn.fit_resample(X_ADASYN, y_ADASYN)
 
-X_ADASYN, y_ADASYN =adasyn.fit_resample(X_ADASYN, y_ADASYN)
-
-model_ADASYN = MLPClassifier(max_iter=1000)
+model_ADASYN = MLPClassifier()
 model_ADASYN.fit(X_ADASYN, y_ADASYN)
 
 #SMOTE resampling
@@ -162,9 +161,9 @@ def plot_tsne_with_labels_and_save(X, y, title, save_filename):
     plt.savefig(save_filename)  # Save the figure as an image
 
 # Example usage
-plot_tsne_with_labels_and_save(X, y, "Multilayer Preceptron - Ionosphere No Resampling", "MLP_no_resampling.png")
-plot_tsne_with_labels_and_save(X_ADASYN, y_ADASYN, "Multilayer Preceptron - Ionosphere ADASYN", "MLP_adasyn.png")
-plot_tsne_with_labels_and_save(X_SMOTE, y_SMOTE, "Multilayer Preceptron - Ionosphere SMOTE", "MLP_smote.png")
-plot_tsne_with_labels_and_save(X_BSMOTE, y_BSMOTE, "Multilayer Preceptron - Ionosphere BSMOTE", "MLP_bsmote.png")
-plot_tsne_with_labels_and_save(X_SMOTEENN, y_SMOTEENN, "Multilayer Preceptron - Ionosphere SMOTEENN", "MLP_smoteenn.png")
-plot_tsne_with_labels_and_save(X_CLUSTER, y_CLUSTER, "Multilayer Preceptron - Ionosphere CLUSTER", "MLP_cluster.png")
+plot_tsne_with_labels_and_save(X, y, "Multilayer Preceptron - Page Blocks No Resampling", "MLP_no_resampling.png")
+plot_tsne_with_labels_and_save(X_ADASYN, y_ADASYN, "Multilayer Preceptron - Page Blocks ADASYN", "MLP_adasyn.png")
+plot_tsne_with_labels_and_save(X_SMOTE, y_SMOTE, "Multilayer Preceptron - Page Blocks SMOTE", "MLP_smote.png")
+plot_tsne_with_labels_and_save(X_BSMOTE, y_BSMOTE, "Multilayer Preceptron - Page Blocks BSMOTE", "MLP_bsmote.png")
+plot_tsne_with_labels_and_save(X_SMOTEENN, y_SMOTEENN, "Multilayer Preceptron - Page Blocks SMOTEENN", "MLP_smoteenn.png")
+plot_tsne_with_labels_and_save(X_CLUSTER, y_CLUSTER, "Multilayer Preceptron - Page Blocks CLUSTER", "MLP_cluster.png")

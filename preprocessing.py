@@ -1,15 +1,11 @@
-import re
+import pandas as pd
 
-# Define the input and output file names
-input_file = 'page_blocks.csv'
-output_file = 'page_blocks_cleaned.csv'
+# Load your CSV file into a pandas DataFrame
+df = pd.read_csv('C:/Users/chris/Documents/GitHub/Internship-Research/datasets/tic-tac-toe.csv')
 
-# Open the input and output files
-with open(input_file, 'r') as infile, open(output_file, 'w') as outfile:
-    # Iterate through each line in the input file
-    for line in infile:
-        # Remove quotation marks while preserving commas
-        cleaned_line = line.replace('"', '')
-        outfile.write(cleaned_line)
+# Replace 'x' with 1, 'o' with 2, and 'b' with 3 in-place
+df.replace({'positive': 5, 'negative': 6}, inplace=True)
 
-print(f'Cleaning from {input_file} to {output_file} completed successfully.')
+# The DataFrame df is now modified with the replacements
+# You can save it to the original file if needed
+df.to_csv('your_file.csv', index=False)

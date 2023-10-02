@@ -45,7 +45,7 @@ def compute_scores(model, X, y):
 #df = pd.read_csv('C:/Users/chris/Downloads/VSCode/Internship_objects/datasets/creditcard.csv')
 
 #Laptop call
-df = pd.read_csv('C:/Users/chris/Documents/GitHub/Internship-Research/datasets/Ionosphere.csv')
+df = pd.read_csv('C:/Users/chris/Documents/GitHub/Internship-Research/datasets/page_blocks.csv')
 
 X = df.iloc[:, :-1]  
 y = df.iloc[:, -1]  
@@ -66,7 +66,7 @@ sampling_strategy_dict = {key: min_instances_per_class for key, value in class_c
 #X_ADASYN, y_ADASYN =adasyn.fit_resample(X_ADASYN, y_ADASYN)
 
 #for when it doesnt 
-adasyn = ADASYN(sampling_strategy=sampling_strategy_dict, n_neighbors=5, random_state=42)
+adasyn = ADASYN(sampling_strategy=sampling_strategy_dict, n_neighbors=4, random_state=42)
 X_ADASYN, y_ADASYN = adasyn.fit_resample(X_ADASYN, y_ADASYN)
 
 model_ADASYN = RandomForestClassifier()
@@ -162,9 +162,9 @@ def plot_tsne_with_labels_and_save(X, y, title, save_filename):
     plt.savefig(save_filename)  # Save the figure as an image
 
 # Example usage
-plot_tsne_with_labels_and_save(X, y, "Random Forest - Ionosphere No Resampling", "RF_no_resampling.png")
-plot_tsne_with_labels_and_save(X_ADASYN, y_ADASYN, "Random Forest - Ionosphere ADASYN", "RF_adasyn.png")
-plot_tsne_with_labels_and_save(X_SMOTE, y_SMOTE, "Random Forest - Ionosphere SMOTE", "RF_smote.png")
-plot_tsne_with_labels_and_save(X_BSMOTE, y_BSMOTE, "Random Forest - Ionosphere BSMOTE", "RF_bsmote.png")
-plot_tsne_with_labels_and_save(X_SMOTEENN, y_SMOTEENN, "Random Forest - Ionosphere SMOTEENN", "RF_smoteenn.png")
-plot_tsne_with_labels_and_save(X_CLUSTER, y_CLUSTER, "Random Forest - Ionosphere CLUSTER", "RF_cluster.png")
+plot_tsne_with_labels_and_save(X, y, "Random Forest - Page Blocks No Resampling", "RF_no_resampling.png")
+plot_tsne_with_labels_and_save(X_ADASYN, y_ADASYN, "Random Forest - Page Blocks ADASYN", "RF_adasyn.png")
+plot_tsne_with_labels_and_save(X_SMOTE, y_SMOTE, "Random Forest - Page Blocks SMOTE", "RF_smote.png")
+plot_tsne_with_labels_and_save(X_BSMOTE, y_BSMOTE, "Random Forest - Page Blocks BSMOTE", "RF_bsmote.png")
+plot_tsne_with_labels_and_save(X_SMOTEENN, y_SMOTEENN, "Random Forest - Page Blocks SMOTEENN", "RF_smoteenn.png")
+plot_tsne_with_labels_and_save(X_CLUSTER, y_CLUSTER, "Random Forest - Page Blocks CLUSTER", "RF_cluster.png")

@@ -45,7 +45,7 @@ def compute_scores(model, X, y):
 #df = pd.read_csv('C:/Users/chris/Downloads/VSCode/Internship_objects/datasets/creditcard.csv')
 
 #Laptop call
-df = pd.read_csv('C:/Users/chris/Documents/GitHub/Internship-Research/datasets/Ionosphere.csv')
+df = pd.read_csv('C:/Users/chris/Documents/GitHub/Internship-Research/datasets/page_blocks.csv')
 
 X = df.iloc[:, :-1]
 y = df.iloc[: ,-1]
@@ -66,7 +66,7 @@ sampling_strategy_dict = {key: min_instances_per_class for key, value in class_c
 #, y_ADASYN =adasyn.fit_resample(X_ADASYN, y_ADASYN)
 
 #for when it doesnt
-adasyn = ADASYN(sampling_strategy=sampling_strategy_dict, n_neighbors=5, random_state=42)
+adasyn = ADASYN(sampling_strategy=sampling_strategy_dict, n_neighbors=4, random_state=42)
 X_ADASYN, y_ADASYN = adasyn.fit_resample(X_ADASYN, y_ADASYN)
 
 model_ADASYN = DecisionTreeClassifier()
@@ -161,9 +161,9 @@ def plot_tsne_with_labels_and_save(X, y, title, save_filename):
     plt.savefig(save_filename)  # Save the figure as an image
 
 # Example usage
-plot_tsne_with_labels_and_save(X, y, "Decision Tree - Ionosphere No Resampling", "DT_no_resampling.png")
-plot_tsne_with_labels_and_save(X_ADASYN, y_ADASYN, "Decision Tree - Ionosphere ADASYN", "DT_adasyn.png")
-plot_tsne_with_labels_and_save(X_SMOTE, y_SMOTE, "Decision Tree - Ionosphere SMOTE", "DT_smote.png")
-plot_tsne_with_labels_and_save(X_BSMOTE, y_BSMOTE, "Decision Tree - Ionosphere BSMOTE", "DT_bsmote.png")
-plot_tsne_with_labels_and_save(X_SMOTEENN, y_SMOTEENN, "Decision Tree - Ionosphere SMOTEENN", "DT_smoteenn.png")
-plot_tsne_with_labels_and_save(X_CLUSTER, y_CLUSTER, "Decision Tree - Ionosphere CLUSTER", "DT_cluster.png")
+plot_tsne_with_labels_and_save(X, y, "Decision Tree - Page Blocks No Resampling", "DT_no_resampling.png")
+plot_tsne_with_labels_and_save(X_ADASYN, y_ADASYN, "Decision Tree - Page Blocks ADASYN", "DT_adasyn.png")
+plot_tsne_with_labels_and_save(X_SMOTE, y_SMOTE, "Decision Tree - Page Blocks SMOTE", "DT_smote.png")
+plot_tsne_with_labels_and_save(X_BSMOTE, y_BSMOTE, "Decision Tree - Page Blocks BSMOTE", "DT_bsmote.png")
+plot_tsne_with_labels_and_save(X_SMOTEENN, y_SMOTEENN, "Decision Tree - Page Blocks SMOTEENN", "DT_smoteenn.png")
+plot_tsne_with_labels_and_save(X_CLUSTER, y_CLUSTER, "Decision Tree - Page Blocks CLUSTER", "DT_cluster.png")

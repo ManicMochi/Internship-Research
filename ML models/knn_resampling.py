@@ -47,7 +47,7 @@ def compute_scores(model, X, y):
 #df = pd.read_csv('C:/Users/chris/Downloads/VSCode/Internship_objects/datasets/creditcard.csv')
 
 #Laptop call
-df = pd.read_csv('C:/Users/chris/Documents/GitHub/Internship-Research/datasets/Ionosphere.csv')
+df = pd.read_csv('C:/Users/chris/Documents/GitHub/Internship-Research/datasets/page_blocks.csv')
 
 X = df.iloc[:, :-1]  
 y = df.iloc[:, -1]  
@@ -65,9 +65,9 @@ y_ADASYN = y.copy()
 class_counts = y.value_counts().to_dict()
 min_instances_per_class = 100
 sampling_strategy_dict = {key: min_instances_per_class for key, value in class_counts.items() if value < min_instances_per_class}
-adasyn = ADASYN(sampling_strategy=sampling_strategy_dict, random_state=42)
 
-X_ADASYN, y_ADASYN =adasyn.fit_resample(X_ADASYN, y_ADASYN)
+adasyn = ADASYN(sampling_strategy=sampling_strategy_dict, n_neighbors=4, random_state=42)
+X_ADASYN, y_ADASYN = adasyn.fit_resample(X_ADASYN, y_ADASYN)
 
 model_ADASYN = KNeighborsClassifier()
 model_ADASYN.fit(X_ADASYN, y_ADASYN)
@@ -161,9 +161,9 @@ def plot_tsne_with_labels_and_save(X, y, title, save_filename):
     plt.ylabel("t-SNE Component 2")
     plt.savefig(save_filename)  # Save the figure as an image
 
-plot_tsne_with_labels_and_save(X, y, "K-Nearest Neighbors - Ionosphere No Resampling", "KNN_no_resampling.png")
-plot_tsne_with_labels_and_save(X_ADASYN, y_ADASYN, "K-Nearest Neighbors - Ionosphere ADASYN", "KNN_adasyn.png")
-plot_tsne_with_labels_and_save(X_SMOTE, y_SMOTE, "K-Nearest Neighbors - Ionosphere SMOTE", "KNN_smote.png")
-plot_tsne_with_labels_and_save(X_BSMOTE, y_BSMOTE, "K-Nearest Neighbors - Ionosphere BSMOTE", "KNN_bsmote.png")
-plot_tsne_with_labels_and_save(X_SMOTEENN, y_SMOTEENN, "K-Nearest Neighbors - Ionosphere SMOTEENN", "KNN_smoteenn.png")
-plot_tsne_with_labels_and_save(X_CLUSTER, y_CLUSTER, "K-Nearest Neighbors - Ionosphere CLUSTER", "KNN_cluster.png")
+plot_tsne_with_labels_and_save(X, y, "K-Nearest Neighbors - Page Blocks No Resampling", "KNN_no_resampling.png")
+plot_tsne_with_labels_and_save(X_ADASYN, y_ADASYN, "K-Nearest Neighbors - Page Blocks ADASYN", "KNN_adasyn.png")
+plot_tsne_with_labels_and_save(X_SMOTE, y_SMOTE, "K-Nearest Neighbors - Page Blocks SMOTE", "KNN_smote.png")
+plot_tsne_with_labels_and_save(X_BSMOTE, y_BSMOTE, "K-Nearest Neighbors - Page Blocks BSMOTE", "KNN_bsmote.png")
+plot_tsne_with_labels_and_save(X_SMOTEENN, y_SMOTEENN, "K-Nearest Neighbors - Page Blocks SMOTEENN", "KNN_smoteenn.png")
+plot_tsne_with_labels_and_save(X_CLUSTER, y_CLUSTER, "K-Nearest Neighbors - Page Blocks CLUSTER", "KNN_cluster.png")

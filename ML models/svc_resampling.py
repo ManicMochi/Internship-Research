@@ -46,7 +46,7 @@ def compute_scores(model, X, y):
 #df = pd.read_csv('C:/Users/chris/Downloads/VSCode/Internship_objects/datasets/creditcard.csv')
 
 #Laptop call
-df = pd.read_csv('C:/Users/chris/Documents/GitHub/Internship-Research/datasets/Ionosphere.csv')
+df = pd.read_csv('C:/Users/chris/Documents/GitHub/Internship-Research/datasets/page_blocks.csv')
 
 #no resampling
 X = df.iloc[:, :-1]  
@@ -65,9 +65,8 @@ y_ADASYN = y.copy()
 class_counts = y.value_counts().to_dict()
 min_instances_per_class = 100
 sampling_strategy_dict = {key: min_instances_per_class for key, value in class_counts.items() if value < min_instances_per_class}
-adasyn = ADASYN(sampling_strategy=sampling_strategy_dict, random_state=42)
-
-X_ADASYN, y_ADASYN =adasyn.fit_resample(X_ADASYN, y_ADASYN)
+adasyn = ADASYN(sampling_strategy=sampling_strategy_dict, n_neighbors=4, random_state=42)
+X_ADASYN, y_ADASYN = adasyn.fit_resample(X_ADASYN, y_ADASYN)
 
 model_ADASYN = SVC()
 model_ADASYN.fit(X_ADASYN, y_ADASYN)
@@ -163,9 +162,9 @@ def plot_tsne_with_labels_and_save(X, y, title, save_filename):
     plt.savefig(save_filename)  # Save the figure as an image
 
 # Example usage
-plot_tsne_with_labels_and_save(X, y, "Support Vector Classification - Ionosphere No Resampling", "SVC_no_resampling.png")
-plot_tsne_with_labels_and_save(X_ADASYN, y_ADASYN, "Support Vector Classification - Ionosphere ADASYN", "SVC_adasyn.png")
-plot_tsne_with_labels_and_save(X_SMOTE, y_SMOTE, "Support Vector Classification - Ionosphere SMOTE", "SVC_smote.png")
-plot_tsne_with_labels_and_save(X_BSMOTE, y_BSMOTE, "Support Vector Classification - Ionosphere BSMOTE", "SVC_bsmote.png")
-plot_tsne_with_labels_and_save(X_SMOTEENN, y_SMOTEENN, "Support Vector Classification - Ionosphere SMOTEENN", "SVC_smoteenn.png")
-plot_tsne_with_labels_and_save(X_CLUSTER, y_CLUSTER, "Support Vector Classification - Ionosphere CLUSTER", "SVC_cluster.png")
+plot_tsne_with_labels_and_save(X, y, "Support Vector Classification - Page Blocks No Resampling", "SVC_no_resampling.png")
+plot_tsne_with_labels_and_save(X_ADASYN, y_ADASYN, "Support Vector Classification - Page Blocks ADASYN", "SVC_adasyn.png")
+plot_tsne_with_labels_and_save(X_SMOTE, y_SMOTE, "Support Vector Classification - Page Blocks SMOTE", "SVC_smote.png")
+plot_tsne_with_labels_and_save(X_BSMOTE, y_BSMOTE, "Support Vector Classification - Page Blocks BSMOTE", "SVC_bsmote.png")
+plot_tsne_with_labels_and_save(X_SMOTEENN, y_SMOTEENN, "Support Vector Classification - Page Blocks SMOTEENN", "SVC_smoteenn.png")
+plot_tsne_with_labels_and_save(X_CLUSTER, y_CLUSTER, "Support Vector Classification - Page Blocks CLUSTER", "SVC_cluster.png")
