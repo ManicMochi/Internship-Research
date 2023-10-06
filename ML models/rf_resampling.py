@@ -45,7 +45,7 @@ def compute_scores(model, X, y):
 #df = pd.read_csv('C:/Users/chris/Downloads/VSCode/Internship_objects/datasets/creditcard.csv')
 
 #Laptop call
-df = pd.read_csv('C:/Users/chris/Documents/GitHub/Internship-Research/datasets/page_blocks.csv')
+df = pd.read_csv('C:/Users/chris/Documents/GitHub/Internship-Research/datasets/Indian Liver Patient.csv')
 
 X = df.iloc[:, :-1]  
 y = df.iloc[:, -1]  
@@ -162,9 +162,9 @@ def plot_tsne_with_labels_and_save(X, y, title, save_filename):
     plt.savefig(save_filename)  # Save the figure as an image
 
 # Example usage
-plot_tsne_with_labels_and_save(X, y, "Random Forest - Page Blocks No Resampling", "RF_no_resampling.png")
-plot_tsne_with_labels_and_save(X_ADASYN, y_ADASYN, "Random Forest - Page Blocks ADASYN", "RF_adasyn.png")
-plot_tsne_with_labels_and_save(X_SMOTE, y_SMOTE, "Random Forest - Page Blocks SMOTE", "RF_smote.png")
-plot_tsne_with_labels_and_save(X_BSMOTE, y_BSMOTE, "Random Forest - Page Blocks BSMOTE", "RF_bsmote.png")
-plot_tsne_with_labels_and_save(X_SMOTEENN, y_SMOTEENN, "Random Forest - Page Blocks SMOTEENN", "RF_smoteenn.png")
-plot_tsne_with_labels_and_save(X_CLUSTER, y_CLUSTER, "Random Forest - Page Blocks CLUSTER", "RF_cluster.png")
+plot_tsne_with_labels_and_save(X, y, "Random Forest - Indian Liver Patient No Resampling", "RF_no_resampling.png")
+plot_tsne_with_labels_and_save(X_ADASYN, y_ADASYN, "Random Forest - Indian Liver Patient ADASYN", "RF_adasyn.png")
+plot_tsne_with_labels_and_save(X_SMOTE, y_SMOTE, "Random Forest - Indian Liver Patient SMOTE", "RF_smote.png")
+plot_tsne_with_labels_and_save(X_BSMOTE, y_BSMOTE, "Random Forest - Indian Liver Patient BSMOTE", "RF_bsmote.png")
+plot_tsne_with_labels_and_save(X_SMOTEENN, y_SMOTEENN, "Random Forest - Indian Liver Patient SMOTEENN", "RF_smoteenn.png")
+plot_tsne_with_labels_and_save(X_CLUSTER, y_CLUSTER, "Random Forest - Indian Liver Patient CLUSTER", "RF_cluster.png")

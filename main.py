@@ -13,10 +13,10 @@ def run_python_file(file_path):
 if __name__ == "__main__":
     # Replace these with the full paths of the Python files you want to run
     file_paths = [
-       # "C:/Users/chris/Documents/GitHub/Internship-Research/ML models/dt_resampling.py",
-       # "C:/Users/chris/Documents/GitHub/Internship-Research/ML models/knn_resampling.py",
+        "C:/Users/chris/Documents/GitHub/Internship-Research/ML models/dt_resampling.py",
+        "C:/Users/chris/Documents/GitHub/Internship-Research/ML models/knn_resampling.py",
         "C:/Users/chris/Documents/GitHub/Internship-Research/ML models/rf_resampling.py",
-       # "C:/Users/chris/Documents/GitHub/Internship-Research/ML models/svc_resampling.py",
+        "C:/Users/chris/Documents/GitHub/Internship-Research/ML models/svc_resampling.py",
         "C:/Users/chris/Documents/GitHub/Internship-Research/ML models/mlp_resampling.py",
     ]
 

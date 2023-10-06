@@ -47,7 +47,7 @@ def compute_scores(model, X, y):
 #df = pd.read_csv('C:/Users/chris/Downloads/VSCode/Internship_objects/datasets/creditcard.csv')
 
 #Laptop call
-df = pd.read_csv('C:/Users/chris/Documents/GitHub/Internship-Research/datasets/page_blocks.csv')
+df = pd.read_csv('C:/Users/chris/Documents/GitHub/Internship-Research/datasets/Indian Liver Patient.csv')
 
 X = df.iloc[:, :-1]  
 y = df.iloc[:, -1]  
@@ -161,9 +161,9 @@ def plot_tsne_with_labels_and_save(X, y, title, save_filename):
     plt.ylabel("t-SNE Component 2")
     plt.savefig(save_filename)  # Save the figure as an image
 
-plot_tsne_with_labels_and_save(X, y, "K-Nearest Neighbors - Page Blocks No Resampling", "KNN_no_resampling.png")
-plot_tsne_with_labels_and_save(X_ADASYN, y_ADASYN, "K-Nearest Neighbors - Page Blocks ADASYN", "KNN_adasyn.png")
-plot_tsne_with_labels_and_save(X_SMOTE, y_SMOTE, "K-Nearest Neighbors - Page Blocks SMOTE", "KNN_smote.png")
-plot_tsne_with_labels_and_save(X_BSMOTE, y_BSMOTE, "K-Nearest Neighbors - Page Blocks BSMOTE", "KNN_bsmote.png")
-plot_tsne_with_labels_and_save(X_SMOTEENN, y_SMOTEENN, "K-Nearest Neighbors - Page Blocks SMOTEENN", "KNN_smoteenn.png")
-plot_tsne_with_labels_and_save(X_CLUSTER, y_CLUSTER, "K-Nearest Neighbors - Page Blocks CLUSTER", "KNN_cluster.png")
+plot_tsne_with_labels_and_save(X, y, "K-Nearest Neighbors - Indian Liver Patient No Resampling", "KNN_no_resampling.png")
+plot_tsne_with_labels_and_save(X_ADASYN, y_ADASYN, "K-Nearest Neighbors - Indian Liver Patient ADASYN", "KNN_adasyn.png")
+plot_tsne_with_labels_and_save(X_SMOTE, y_SMOTE, "K-Nearest Neighbors - Indian Liver Patient SMOTE", "KNN_smote.png")
+plot_tsne_with_labels_and_save(X_BSMOTE, y_BSMOTE, "K-Nearest Neighbors - Indian Liver Patient BSMOTE", "KNN_bsmote.png")
+plot_tsne_with_labels_and_save(X_SMOTEENN, y_SMOTEENN, "K-Nearest Neighbors - Indian Liver Patient SMOTEENN", "KNN_smoteenn.png")
+plot_tsne_with_labels_and_save(X_CLUSTER, y_CLUSTER, "K-Nearest Neighbors - Indian Liver Patient CLUSTER", "KNN_cluster.png")

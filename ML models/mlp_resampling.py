@@ -47,7 +47,7 @@ def compute_scores(model, X, y):
 #df = pd.read_csv('C:/Users/chris/Downloads/VSCode/Internship_objects/datasets/creditcard.csv')
 
 #Laptop call
-df = pd.read_csv('C:/Users/chris/Documents/GitHub/Internship-Research/datasets/page_blocks.csv')
+df = pd.read_csv('C:/Users/chris/Documents/GitHub/Internship-Research/datasets/Indian Liver Patient.csv')
 
 X = df.iloc[:, :-1]  
 y = df.iloc[:, -1]  
@@ -161,9 +161,9 @@ def plot_tsne_with_labels_and_save(X, y, title, save_filename):
     plt.savefig(save_filename)  # Save the figure as an image
 
 # Example usage
-plot_tsne_with_labels_and_save(X, y, "Multilayer Preceptron - Page Blocks No Resampling", "MLP_no_resampling.png")
-plot_tsne_with_labels_and_save(X_ADASYN, y_ADASYN, "Multilayer Preceptron - Page Blocks ADASYN", "MLP_adasyn.png")
-plot_tsne_with_labels_and_save(X_SMOTE, y_SMOTE, "Multilayer Preceptron - Page Blocks SMOTE", "MLP_smote.png")
-plot_tsne_with_labels_and_save(X_BSMOTE, y_BSMOTE, "Multilayer Preceptron - Page Blocks BSMOTE", "MLP_bsmote.png")
-plot_tsne_with_labels_and_save(X_SMOTEENN, y_SMOTEENN, "Multilayer Preceptron - Page Blocks SMOTEENN", "MLP_smoteenn.png")
-plot_tsne_with_labels_and_save(X_CLUSTER, y_CLUSTER, "Multilayer Preceptron - Page Blocks CLUSTER", "MLP_cluster.png")
+plot_tsne_with_labels_and_save(X, y, "Multilayer Preceptron - Indian Liver Patient No Resampling", "MLP_no_resampling.png")
+plot_tsne_with_labels_and_save(X_ADASYN, y_ADASYN, "Multilayer Preceptron - Indian Liver Patient ADASYN", "MLP_adasyn.png")
+plot_tsne_with_labels_and_save(X_SMOTE, y_SMOTE, "Multilayer Preceptron - Indian Liver Patient SMOTE", "MLP_smote.png")
+plot_tsne_with_labels_and_save(X_BSMOTE, y_BSMOTE, "Multilayer Preceptron - Indian Liver Patient BSMOTE", "MLP_bsmote.png")
+plot_tsne_with_labels_and_save(X_SMOTEENN, y_SMOTEENN, "Multilayer Preceptron - Indian Liver Patient SMOTEENN", "MLP_smoteenn.png")
+plot_tsne_with_labels_and_save(X_CLUSTER, y_CLUSTER, "Multilayer Preceptron - Indian Liver Patient CLUSTER", "MLP_cluster.png")
